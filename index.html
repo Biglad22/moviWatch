@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="png/image" href="assets\favicon.png">
+    <link href="assets/css/uicons-regular-rounded.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="index.css">
+    <title>MoviWatch -Home of premieres</title>
+</head>
+<body class="px-0">
+    <header class="loadingpage row cols-row-1 mx-0 p-0 align-items-center justify-content-center">
+        <div class="col-12 m-0 p-0 gap-4 align-center">
+            <h1 class="text-center mb-5">
+                welcome to the world
+                <br/>
+                of <span class="red">movies</span>
+            </h1>
+            <h3 class="text-center">
+                be the first with your popcorn
+            </h3>
+        </div>
+    </header>
+    <main id="main-page" class="row container cols-row-1 mx-auto px-3 px-sm-0 justify-content-center gap-3 gap-sm-5" hidden>
+        <nav class="row col-12 m-0 mb-o mb-sm-3 px-0 py-4  align-items-center justify-content-between">
+            <div class="row col-auto p-0 m-0 gap-5 align-items-center">
+                <a href="#" class="col-auto p-0 mx-0">
+                    <img src="assets\logo.png" alt="logo" title="moviwatch logo" class="logo p-0 mx-0"/>
+                </a>
+                <div class="nav-links col-auto p-4 p-lg-0 m-0 rounded-3">
+                    <ul class="d-block d-lg-flex p-4 p-lg-0 mx-auto mx-md-0 m-0 rounded-md-2 rounded-0">
+                        <li class="col py-2 px-3">
+                            <a href="#" class="home nav-link">
+                                home
+                            </a>
+                        </li>
+                        <li class="col py-2 px-3">
+                            <a href="news.html" class="news nav-link">
+                                news
+                            </a>
+                        </li>
+                        <li class="col py-2 px-3">
+                            <a href="premieres.html" class="premieres nav-link">
+                                premieres
+                            </a>
+                        </li>
+                        <li class="col py-2 px-3">
+                            <a href="developer.html" class="premieres nav-link">
+                                developer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-bar col-auto row m-0 p-0">
+                <div class="search-box col-auto p-0 mx-3">
+                    <input type="text" placeholder="search" class="search py-2 px-3 text-right rounded-5 d-none d-lg-block"/>
+                    <button type="button" class="rounded-circle px-3 py-2 d-lg-none search-button"><span class="fi-rr-search fi"></span></button>
+                </div>
+                <button class="col-auto rounded-circle px-3 py-2 me-3 notification-stat">
+                    <div class="notice-me rounded-circle"></div>
+                    <span class="fi-rr-bell fi"></span>
+                </button>
+                <button class="col-auto rounded-circle px-3 py-2 menu d-lg-none">
+                    <span class="fi-rr-menu-burger fi"></span>
+                </button>
+            </div>
+            <div class="reminder-list p-0 m-0 rounded-4">
+                <div class="m-0 p-3 p-sm-5">
+                    <div class="list p-0 px-1 px-sm-3 m-0">
+                        <ul id="rm-content" class="row row-cols-1 m-0 p-0 gap-2">
+                            <li class="defualt-text p-0 m-0 text-center">no reminder</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="main-section col-12 row m-0 p-0 gap-5">
+            <header class="col-12 m-0 p-0 mb-0 mb-sm-5">
+                <section>
+                    <div class="hero mb-4 ms-auto rounded-3">
+                        <div class="badge p-3 rounded-top-md-0 rounded-top-0">
+                            <h4>Upcoming</h4>
+                        </div>
+                        <div src="" alt="" id="hero-movie-img" class="hero-img ms-auto rounded-5 rounded-md-5 rounded-top-0  rounded-top-md-5 headerstill-loading">
+                            <div class="hero-text p-4 pb-5 rounded-bottom-5">
+                                <h3 id="hero-movie-title" class="mb-1"></h3>
+                                <p class="m-0 p-0 overview">Overview: 
+                                    <span id="hero-movie-director">
+                                        
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="premiere-details row m-0 p-0 justify-content-between">
+                        <div class="premiere-date p-0 col-auto">
+                            <h6 class="mb-2">
+                                premiere date:
+                            </h6>
+                            <p class="date mb-2 still-loading"></p>
+                            <button class="row reminder-button m-0 p-0 align-items-center p-2 ps-0">
+                                <span class="fi-rr-bell fi col-auto me-2 px-0"></span>
+                                remind me
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </header>
+            <section class="col-12 m-0 p-0 mb-0 mb-sm-5">
+                <div class="header p-2">
+                    <h4>
+                        new movies
+                    </h4>
+                </div>
+                <div class="movie-cards row p-0 my-3 my-sm-5 gap-4 align-items-center justify-content-center justify-content-lg-left">
+                    <div class="movie-cards-main-container pb-2 pb-sm-4 col-12 col-lg">
+                        <div class="single-movie-card row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 m-0 p-0">
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col ">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col ">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col hidden-class">
+                                <img src='assets/defualt.jpg'   alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col hidden-class">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col hidden-class">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-movie-main-container rounded-3 p-2 p-sm-4 col hidden-class">
+                                <img src='assets/defualt.jpg'  alt="" class="card-movie-img mb-3 rounded-4 still-loading" loading="lazy"/>
+                                <div class="card-movie-details">
+                                    <div class="card-ratings-badge  px-3 py-2 rounded-5">
+                                        <p class="card-movie-rating m-0">2.2</p>
+                                    </div>
+                                    <h6 class="card-movie-name still-loading"></h6>
+                                    <div class="stream-services-container">
+                                        <p class="d-inline watch-date">watch on:</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="findmore-movies-container p-0 m-0 col-12 col-lg-auto text-center d-sm-none">
+                        <button class="findmore-movies p-3 rounded-circle mx-auto">
+                            <span class="fi-rr-angle-small-right fi p-0"></span>
+                        </button>
+                        <p class="findmore-label mx-0 ">see more</p>
+                    </div>
+                </div>
+            </section>
+            <section class="col-12 m-0 p-0 mb-0 mb-sm-5">
+                <div class="header p-2">
+                    <h4>
+                        Tv shows
+                    </h4>
+                </div>
+                <div class="searchbtns row p-0 m-0 my-3 my-sm-5 gap-3">
+                    <button type="button" id="0" class="px-3 py-2 m-0 col-auto rounded-1">0 ~ 9</button>
+                    <button type="button" id="a" class="px-3 py-2 m-0 col-auto rounded-1">a</button>
+                    <button type="button" id="b" class="px-3 py-2 m-0 col-auto rounded-1">b</button>
+                    <button type="button" id="c" class="px-3 py-2 m-0 col-auto rounded-1">c</button>
+                    <button type="button" id="d" class="px-3 py-2 m-0 col-auto rounded-1">d</button>
+                    <button type="button" id="e" class="px-3 py-2 m-0 col-auto rounded-1">e</button>
+                    <button type="button" id="f" class="px-3 py-2 m-0 col-auto rounded-1">f</button>
+                    <button type="button" id="g" class="px-3 py-2 m-0 col-auto rounded-1">g</button>
+                    <button type="button" id="h" class="px-3 py-2 m-0 col-auto rounded-1">h</button>
+                    <button type="button" id="i" class="px-3 py-2 m-0 col-auto rounded-1">i</button>
+                    <button type="button" id="j" class="px-3 py-2 m-0 col-auto rounded-1">j</button>
+                    <button type="button" id="k" class="px-3 py-2 m-0 col-auto rounded-1">k</button>
+                    <button type="button" id="l" class="px-3 py-2 m-0 col-auto rounded-1">l</button>
+                    <button type="button" id="m" class="px-3 py-2 m-0 col-auto rounded-1">m</button>
+                    <button type="button" id="n" class="px-3 py-2 m-0 col-auto rounded-1">n</button>
+                    <button type="button" id="o" class="px-3 py-2 m-0 col-auto rounded-1">o</button>
+                    <button type="button" id="p" class="px-3 py-2 m-0 col-auto rounded-1">p</button>
+                    <button type="button" id="q" class="px-3 py-2 m-0 col-auto rounded-1">q</button>
+                    <button type="button" id="r" class="px-3 py-2 m-0 col-auto rounded-1">r</button>
+                    <button type="button" id="s" class="px-3 py-2 m-0 col-auto rounded-1">s</button>
+                    <button type="button" id="t" class="px-3 py-2 m-0 col-auto rounded-1">t</button>
+                    <button type="button" id="u" class="px-3 py-2 m-0 col-auto rounded-1">u</button>
+                    <button type="button" id="v" class="px-3 py-2 m-0 col-auto rounded-1">v</button>
+                    <button type="button" id="w" class="px-3 py-2 m-0 col-auto rounded-1">w</button>
+                    <button type="button" id="x" class="px-3 py-2 m-0 col-auto rounded-1">x</button>
+                    <button type="button" id="y" class="px-3 py-2 m-0 col-auto rounded-1">y</button>
+                    <button type="button" id="z" class="px-3 py-2 m-0 col-auto rounded-1">z</button>
+                </div>
+                <div class="news-cards row p-0 pb-3 pb-sm-5 m-0 rounded-3 rounded-sm-5" id="news-search" hidden>
+                    <div class="single-news-card row row-cols-2 row-cols-sm-3 row-cols-lg-4 col-12 p-3 p-sm-5 m-0 mb-5 rounded-4">
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-2 p-sm-3">
+                            <div class="card-news-main-container m-0 p-3 rounded-1">
+                                <img src="" alt="" class="card-news-img mb-2"/>
+                                <div class="card-ratings-badge   px-3 py-2 my-3 rounded-5">
+                                    <p class="card-movie-rating news-rating m-0">2.2</p>
+                                </div>
+                                <h6 class="card-news-headline">  
+                                </h6>
+                                <p class="news-year"></p>
+                                <p class="watch-date">Language: <span class="show-lang"></span></p>
+                            </div> 
+                        </div>                   
+                    </div>
+                    <div class="news-button col-12 p-0 text-center">
+                        <button type="button" class="seemore-news red py-2 px-5 rounded-2">
+                            see more
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class=" popup m-0 p-5">
+                <div class="popup-window container row row-cols-1 m-0 px-3  p-sm-0 py-0 rounded-5">
+                    <div class="col-12 row row-cols-1 row-cols-sm-2 p-5 m-0 gap-4">
+                        <div class="p-4 popup-closer-wraper" >
+                            <button type="button" class="px-3 py-2" id="close-popup">
+                                <span class="fi-rr-cross" ></span>
+                            </button>
+                        </div>
+                        <div class="popup-img col-7 col-sm-6 col-md-4 col-lg-3 p-0 m-0">
+                            <img src="" alt="" id="popup-img">
+                        </div>
+                        <div class="popup-info col-12 col-sm-12 col-md p-3 m-0">
+                            <div class="m-0 mb-4 p-0">
+                                <h3 class="popup-title m-0 mb-2 p-0">The title</h3>
+                                <div class="card-ratings-badge px-3 py-2 rounded-5">
+                                    <p class="popup-movie-rating m-0">2.2</p>
+                                </div>
+                            </div>
+                            <div class="popup-details m-0 ">
+                                <p id="popup-overview" >
+                                </p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
