@@ -313,25 +313,23 @@ let heroSrc;
     ////movies card display
     const moviCards = await (async(i,n) => {
         setInterval(function(){
-            for (i; i < cardsImg.length; i++){
-            
-                if (i < cardsImg.length && n < movies.length){
-                    try{
-                        cardsImg[i].src = `https://image.tmdb.org/t/p/original${movies[n].poster_path}`;
-                        cardsName[i].innerText =  movies[n].title;
-                        cardsName[i].classList.remove('still-loading');
 
-                        cardsDate[i].innerText = movies[n].release_date;
-                        if ( movies[n].vote_average !== 0){
-                            cardsRating[i].innerText = movies[n].vote_average;
-                        }else{
-                            cardsRating[i].innerText ='To Be Released';
-                        }
-                        cardsDate[i].innerText = movies[n].release_date;
+            let cards = cardsImg.length;
+            let moviesLen = movies.length;
+            for (i; i < cards; i++){
+            
+                if (i < cards && n < moviesLen){
+
+                    cardsImg[i].src = `https://image.tmdb.org/t/p/original${movies[n].poster_path}`;
+                    cardsName[i].innerText =  movies[n].title;
+                    cardsName[i].classList.remove('still-loading');
+
+                    if ( movies[n].vote_average !== 0){
+                        cardsRating[i].innerText = movies[n].vote_average;
+                    }else{
+                        cardsRating[i].innerText ='To Be Released';
                     }
-                    catch(error){
-                        console.log(error);
-                    }
+                    cardsDate[i].innerText = movies[n].release_date;
 
                     n++;
                 }
@@ -339,7 +337,8 @@ let heroSrc;
             }
 
             i = 0;
-            if(n === movies.length){
+            
+            if(n === moviesLen){
                 n = 0;
             }
         },30000)
@@ -494,7 +493,6 @@ let tvShows = [];
         }catch(error){
             console.error(error);
         };
-
     };
 
     return tvShows;
@@ -529,7 +527,7 @@ for (var b = 0; b < searchBtns.length; b++){
             (async (data)=>{
                 try{
 
-                    //iterate through data considering page number 
+                    //iterate through data list of tvshows
                     for(i in data){
 
                         let curDataName = data[i].name[0].toUpperCase();
@@ -648,7 +646,7 @@ for (var b = 0; b < searchBtns.length; b++){
                                             card = 0;
                                             break;
                                         }
-                                    }
+                                    };
                                     
                                     tvShowResult = document.querySelectorAll('.card-news-main-container');  
 

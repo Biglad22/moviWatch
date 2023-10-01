@@ -14,6 +14,22 @@
     --caption:0.896rem;
 }
 
+::-webkit-scrollbar{
+    width:3px;
+    height:3px;
+    background-color:var(--card);
+    transition: opacity 0.5s ease-in-out;
+}
+::-webkit-scrollbar:hover{
+    opacity:0;
+}
+::-webkit-scrollbar-track{
+    background-color:transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color:var(--primary);
+}
+
 * , a, div, section, header, main, ul, li , ::before, ::after {
     box-sizing:border-box;
     margin:0;
@@ -234,6 +250,12 @@ main h3{
     border-color:var(--secondary) !important;
 }
 
+/*cards scrolling effect*/
+.movie-cards-main-container{
+    overflow:auto;
+}
+
+
 
 
 /*media queries*/
@@ -310,8 +332,33 @@ main h3{
         font-size:48.6%;
     }
 }
-@media screen and (max-width:300px){
-    HTML{
-        font-size:34.7%;
+
+@media screen and (max-width:480px){
+    h1{
+        font-size:4.0rem;
+        text-transform:capitalize;
+    }
+    h2{
+        font-size:3.2rem;
+        text-transform:capitalize;
+    }
+    h3{
+        font-size:2.8rem;
+        text-transform:capitalize;
+    }
+    h4{
+        font-size:2.4rem;
+        text-transform:capitalize;
+    }
+    h5{
+        font-size:2.0rem;
+        text-transform:capitalize;
+    }
+    h6{
+        font-size:1.8rem;
+        text-transform:capitalize;
+    }
+    p, input, a{
+        font-size:1.6rem;
     }
 }
