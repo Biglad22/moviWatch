@@ -143,6 +143,7 @@ let movies= [];
             if(monthDif ==='good to go' && thisGenre.includes(genre)){
                 if (n < cards.length){
                     
+                    cards[n].stlye.display = 'block';
                     if(movies[i].poster_path !==''){
                         cards[n].querySelector('.card-movie-img').src = `https://image.tmdb.org/t/p/original${movies[i].poster_path}`;
                     };
