@@ -31,7 +31,7 @@ let movies= [];
         }
     };
 
-    while(p < 5){
+    while(p < 20){
         const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${p}`, options)
         const result = await response.json();
         const data = await result.results; 
@@ -60,12 +60,16 @@ let movies= [];
     const date = new Date;
 
     const month = date.getMonth();
+
     const todayMonth = actualMon[month];
 
     const toDay = date.getDay();
+    
 
     //find upcoming movies
     const upcomingMovie = await (async ()=>{
+
+        let n = 0;
         //iterates through movies list
         for (i in movies){
 
@@ -75,23 +79,31 @@ let movies= [];
 
             //gets the movies release day
             let thisMovDay = Number(thisMovDate[0]);
-            let thisMovMonth = thisMovDate[1];
+            if (thisMovDay[0] == 0 ){
+                thisMovDay = Number(thisMovDay[1]);
+            }else{
+                thisMovDay = Number(thisMovDay);
+            };
+
+            let thisMovMonth = Number(thisMovDate[1]);
 
             if (thisMovMonth[0] == 0 ){
                 thisMovMonth = Number(thisMovMonth[1]);
             }else{
                 thisMovMonth = Number(thisMovMonth);
             };
-             
-
-            let n = 0;
 
             //check citeria for display
-            if(thisMovDay > toDay && (thisMovMonth == month || thisMovMonth > todayMonth )){
+            if(thisMovDay > toDay && (thisMovMonth == month || thisMovMonth > month )){
                 if (n < upcomingCards.length){
-                    upcomingCards[n].querySelector('.card-movie-img').src = `https://image.tmdb.org/t/p/original${movies[i].poster_path}`;
-                    upcomingCards[n].querySelector('.card-movie-name').src = movies[i].title;
-                    upcomingCards[n].querySelector('.watch-date').src = movies[i].release_date;
+                    console.log(movies[i]);
+                    if(movies[i].poster_path !==''){
+                        upcomingCards[n].querySelector('.card-movie-img').src = `https://image.tmdb.org/t/p/original${movies[i].poster_path}`;
+                    };
+                    upcomingCards[n].querySelector('.card-movie-name').innerText = movies[i].title;
+                    upcomingCards[n].querySelector('.watch-date').innerText = movies[i].release_date;
+
+                    n++;
                 }else{
                     break;
                 }
@@ -103,6 +115,8 @@ let movies= [];
 
     //find movies
     const genreSelector = (cards,genre) =>{
+
+        let n = 0;
         //iterates through movies list
         for (i in movies){
 
@@ -111,31 +125,31 @@ let movies= [];
             thisMovDate = thisMovDate.split('-');
 
             //gets the movies release day
-            let thisMovDay = thisMovDate[0];
-            let thisMovMonth = thisMovDate[1];
-             
+            let thisMovDay = Number(thisMovDate[0]);
+            let thisMovMonth = Number(thisMovDate[1]);
 
-            let n = 0;
-
-            let monthDif = thisMovMonth - todayMonth;
-            if (monthDif === 0){
-                if (thisMovDay < toDay){
-                    thisMovDay = 'good to go';
-                }
+            let monthDif = thisMovMonth - month;
+            
+            if (monthDif > 0){
+                monthDif = 'not good to go';
             }else if(monthDif < 0){
-                thisMovDay = 'not good to go';
-            }
+                monthDif = 'good to go';
+            };
 
-            let thisGenre = movies.genre.toLowerCase(); 
+            let thisGenre = movies[i].genre_ids; 
+            genre = Number(genre);
 
             //check citeria for display
-            if((monthDif < 2 || monthDif ==='good to go') && thisGenre === genre){
+            if(monthDif ==='good to go' && thisGenre.includes(genre)){
                 if (n < cards.length){
-                    cards[n].querySelector('.card-movie-img').src = `https://image.tmdb.org/t/p/original${movies[i].poster_path}`;
+                    
+                    if(movies[i].poster_path !==''){
+                        cards[n].querySelector('.card-movie-img').src = `https://image.tmdb.org/t/p/original${movies[i].poster_path}`;
+                    };
                     cards[n].querySelector('.card-movie-name').innerText = movies[i].title;
                     cards[n].querySelector('.watch-date').innerText = movies[i].release_date;
                     cards[n].querySelector('.card-movie-rating').innerText = movies[i].vote_average;
-
+                    n++;
                 }else{
                     break;
                 }
@@ -146,18 +160,18 @@ let movies= [];
     };
 
     //for action movies
-    genreSelector(actionCards,'action');
+    genreSelector(actionCards,'28');
 
     //for adventure movies
-    genreSelector(adventureCards,'adventure');
+    genreSelector(adventureCards,'12');
 
     //for drama movies
-    genreSelector(dramaCards,'drama');
+    genreSelector(dramaCards,'18');
 
     //for comedy movies
-    genreSelector(comedyCards,'comedy');
+    genreSelector(comedyCards,'35');
 
     //for romance movies
-    genreSelector(romanceCards,'romance');
+    genreSelector(romanceCards,'10749');
 
 })();
